@@ -1,0 +1,35 @@
+FUNCTION dot_product(VAR V1 : ARRAY_OF INTEGER[N],V2 : ARRAY_OF INTEGER[N]) : INTEGER 
+VAR
+    ps,i:INTEGER
+BEGIN
+ps:=0;
+    FOR i FROM 1 TO N-1  DO
+    ps:=ps+V1[i]*V2[i];
+    END_FOR  
+    RETURN ps ;
+END
+ALGORITHM DOT_PRODUCT 
+VAR
+    M:ARRAY_OF INTEGER[N][N];
+    V1,V2: ARRAY_OF INTEGER[N]
+    i,j,n,x,y:INTEGER
+BEGIN
+    WRITE("please write the size of matrix");
+    READ(N);
+    FOR i FROM 1 TO N-1 DO 
+    FOR j FROM 1 TO N-1 DO 
+    READ(M[i][j]);
+    END_FOR
+    END_FOR
+    WRITE("plase give me 2 index")
+    READ(x);
+    READ(y);
+    V1:=M(x,:);
+    V2:= M(:,y);
+    n:=dot_product(V1, V2);
+    IF (n:=0) THEN
+    WRITE("this vectors are orthogonal");
+    ELSE                                                
+    WRITE("this vectors are NOT orthogonal");                                                                                                                       
+    END_IF
+END
